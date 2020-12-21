@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="mystyle.css">
+    <script src="js/guanliyuan.js"></script>
+</head>
+<body style="background-color: darkgrey">
+<div  style="width:1450px">
+    <div style="width:100%;text-align: center;font-size: 200%;background-color: gold;"><p style="margin-bottom:10px;margin-top: 0;padding-top: 15px;padding-bottom: 15px">管理员系统</p></div>
+    <div style="width:300px;height:470px;background-color:lawngreen;float: left">
+        <label style="font-size:150%"><b>ID:</b><span style="font-size:100%" id="p1">我</span></label>
+        <script>
+            var a=opener.document.getElementById("uname").value;
+            document.getElementById("p1").innerText = a;
+        </script>
+        <br>
+        <label style="font-size:150%"><b>姓名:</b><b id="un">姓名</b></label><br>
+        <hr>
+        <div style="text-align: center;"><label style="color:red;font-size:150%;font-family:Verdana"><b >查询卖家记录</b></label><br></div>
+        <input type="text" placeholder="Enter UserID" id="sellname" required>
+        <div style="text-align: center;"><button id="query_s_btn" onclick="query_s()" type="button"  >查询</button></div>
+        <hr>
+        <div style="text-align: center;"><label style="color:red;font-size:150%;font-family:Verdana"><b >查询买家记录</b></label><br></div>
+        <input type="text" placeholder="Enter UserID" id="buyname" required>
+        <div style="text-align: center;"><button id="query_b_btn" onclick="query_b()" type="button"  >查询</button></div>
+        <hr>
+        <div style="text-align: center;"><button id="delete_all_btn" onclick="delete_b()" type="button"  >删除所有交易记录</button></div>
+        <hr>
+    </div>
+    <div style="width:1100px;height:470px;background-color:lawngreen;float: left">
+
+
+
+        <div class="right">
+            <div class="item">
+                <img class="btn" src="1.jpg" style="max-width:100%;"/>
+
+                <p><a href="#">电脑</a><p>
+                <p><span style="color: red; ">￥6999</span></p>
+            </div>
+            <div class="item">
+                <img class="btn" src="2.jpg" style="max-width:100%;"/>
+
+                <p><a href="#">球鞋</a><p>
+                <p><span style="color: red; ">￥1999</span></p>
+            </div>
+            <div class="item">
+                <img class="btn" src="3.jpg" style="max-width:100%;"/>
+
+                <p><a href="#">衣服</a><p>
+                <p><span style="color: red; ">￥999</span></p>
+            </div>
+            <?php
+            $link=mysqli_connect('localhost','root','kunye123')or die("数据库连接失败");
+            mysqli_select_db($link,'myweb');
+            mysqli_query($link,"set names charset");
+            $q=" select * from good ";
+            $ans=mysqli_query($link,$q);
+            if(!$ans)
+            {
+                printf("error:%s\n",mysqli_error($link));
+            }
+            while($row=mysqli_fetch_assoc($ans))
+            {
+                print <<<EOT
+                <div class="item">
+            <img class="btn" src={$row["good_img"]} onclick="javascript:deal(this.src);" style="max-width:100%;cursor:pointer;"/>
+
+            <p><a href="#">{$row["good_name"]}</a><p>
+            <p><font color="red">￥{$row["good_price"]}</font></p>
+        </div>
+        EOT;
+        }
+        ?>
+    </div>
+
+</div>
+</div>
+</body>
+</html>

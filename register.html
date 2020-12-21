@@ -1,0 +1,42 @@
+<!doctype html>
+<html xmlns:javascript="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="mystyle.css">
+    <script src="js/zhuce.js"></script>
+
+</head>
+
+<body background="image/bg1.jpg">
+
+<div class="text" style="text-align:center;color:white;size:100px;font-size:60px;padding-top: 70px;">宇宙商店</div>
+<div id="id01" class="modal">
+
+    <form class="modal-content animate" action="">
+
+        <div class="container">
+            <label><b>ID</b></label>
+            <input type="text" placeholder="Enter UserID" id="uid" required>
+            <label><b>NAME</b></label>
+            <input type="text" placeholder="Enter Username" id="uname" required>
+            <label><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" id="psw" required>
+            <label><b>Confirm Password</b></label>
+            <input type="password" placeholder="comfirm Password" id="cpsw" required>
+            <form>
+                <input type="radio" name="shenfen" value="User">注册为用户<br>
+                <input type="radio" name="shenfen" value="Administrator">注册为管理员<br>
+            </form>
+
+            <br>
+            <button id="zhucebtn"  onclick="zhuce()" type="button" class="" >注册</button>
+            <button type="button"  onclick="javascript:history.back(-1);" id="cancelbtn2" class="cancelbtn">取消</button>
+        </div>
+
+
+    </form>
+</div>
+
+</body>
+</html>
